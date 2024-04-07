@@ -10,6 +10,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
+/*
+https://www.baeldung.com/java-concurrent-hashset-concurrenthashmap
+https://docs.oracle.com/javase%2F7%2Fdocs%2Fapi%2F%2F/java/util/concurrent/ExecutorService.html#:~:text=Two%20different%20methods%20are%20provided,to%20stop%20currently%20executing%20tasks
+ */
 
 @Slf4j
 class SingletonTest {

@@ -14,16 +14,18 @@ public class Singleton {
     private static Singleton instance;
     private static int count = 0;
 
+    @SneakyThrows
     private Singleton() {
+        // For test purpose
+        if (count == 0) {
+            count++;
+            Thread.sleep(100);
+        }
     }
 
     @SneakyThrows
     public static Singleton getInstance() {
         if (instance == null) {
-            if (count == 0) {
-                count++;
-                Thread.sleep(100);
-            }
             instance = new Singleton();
         }
         return instance;

@@ -20,6 +20,7 @@ public class DoubleChackedLockingSingleton {
         }
         return instance;
     }
+
     public void doSomething(){
         log.info("I did it again");
     }
