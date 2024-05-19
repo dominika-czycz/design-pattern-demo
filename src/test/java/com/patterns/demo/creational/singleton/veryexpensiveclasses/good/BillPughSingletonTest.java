@@ -8,6 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,13 +21,9 @@ class BillPughSingletonTest {
 
         ExecutorService executorService = Executors.newFixedThreadPool(threadNumber);
 
-        for (int i = 0; i < threadNumber; i++) {
-            executorService.execute(() -> {
-                log.info("running in thread: {}", Thread.currentThread().getName());
-                BillPughSingleton instance = BillPughSingleton.getInstance();
-                singletonObjects.add(instance);
-            });
-        }
+        IntStream.range(0, threadNumber).forEach(i -> {
+            singletonObjects.add(BillPughSingleton.getInstance());
+        });
 
         shutdownAndAwaitTermination(executorService);
 
