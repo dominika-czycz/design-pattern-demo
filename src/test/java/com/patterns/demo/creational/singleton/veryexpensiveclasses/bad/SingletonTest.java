@@ -8,6 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 /*
@@ -23,10 +24,10 @@ class SingletonTest {
         ExecutorService executorService = Executors.newFixedThreadPool(threadNumber);
         Set<Singleton> singletonObjects = ConcurrentHashMap.newKeySet();
 
-        for (int i = 0; i < threadNumber; i++) {
+        IntStream.range(0, threadNumber).forEach(i -> {
             executorService.execute(() -> singletonObjects.add(Singleton.getInstance()));
-        }
-
+        });
+        
         shutdownAndAwaitTermination(executorService);
 
         assertThat(singletonObjects).hasSizeGreaterThan(1);
