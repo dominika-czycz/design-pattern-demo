@@ -1,6 +1,5 @@
 package com.patterns.demo.creational.singleton.veryexpensiveclasses.bad;
 
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
@@ -16,7 +15,7 @@ https://www.baeldung.com/java-concurrent-hashset-concurrenthashmap
 https://docs.oracle.com/javase%2F7%2Fdocs%2Fapi%2F%2F/java/util/concurrent/ExecutorService.html#:~:text=Two%20different%20methods%20are%20provided,to%20stop%20currently%20executing%20tasks
  */
 
-@Slf4j
+
 class SingletonTest {
     @Test
     void callGetInstanceIsNotThreadSafe() {
@@ -24,10 +23,10 @@ class SingletonTest {
         ExecutorService executorService = Executors.newFixedThreadPool(threadNumber);
         Set<Singleton> singletonObjects = ConcurrentHashMap.newKeySet();
 
-        IntStream.range(0, threadNumber).forEach(i -> {
-            executorService.execute(() -> singletonObjects.add(Singleton.getInstance()));
-        });
-        
+        IntStream.range(0, threadNumber).forEach(i ->
+                executorService.execute(() -> singletonObjects.add(Singleton.getInstance()))
+        );
+
         shutdownAndAwaitTermination(executorService);
 
         assertThat(singletonObjects).hasSizeGreaterThan(1);
