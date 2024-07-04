@@ -21,7 +21,6 @@ class NDAgreementTest {
         // when
         NDAgreement clonedNdAgreement = ndAgreement.clone();
 
-
         // then
         assertThat(clonedNdAgreement).isNotEqualTo(ndAgreement);
         assertThat(clonedNdAgreement).usingRecursiveComparison().isEqualTo(ndAgreement);
