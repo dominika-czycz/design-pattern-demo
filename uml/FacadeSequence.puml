@@ -1,0 +1,21 @@
+@startuml
+actor Client #Moccasin
+participant Facade #LightBlue
+participant SubsystemA #Orange
+participant SubsystemB #Pink
+participant SubsystemC #Gold
+Client -> Facade: invokeOperation()
+activate Facade
+Facade -> SubsystemA: performOperationA()
+activate SubsystemA
+Facade -> SubsystemB: performOperationB()
+activate SubsystemB
+Facade -> SubsystemC: performOperationC()
+activate SubsystemC
+Facade --> Client: result
+deactivate SubsystemC
+deactivate SubsystemB
+deactivate SubsystemA
+deactivate Facade
+
+@enduml

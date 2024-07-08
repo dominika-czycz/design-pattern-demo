@@ -1,0 +1,27 @@
+@startuml
+class Facade {
+  +compile()
+}
+
+class Subsystem1 {
+  +scan()
+  +parse()
+  +generateCode()
+}
+
+class Subsystem2 {
+  +optimize()
+  +link()
+}
+
+Facade -> Subsystem1
+Facade -> Subsystem2
+
+skinparam class {
+  BackgroundColor LightBlue
+  BorderColor DarkBlue
+  ArrowColor DarkBlue
+  FontColor DarkBlue
+}
+
+@enduml
