@@ -5,5 +5,6 @@ import com.patterns.demo.creational.factorymethod.springioc.application.model.Do
 
 public interface DocumentProcessor {
     void process(Document document);
+
     DocumentType getDocumentType();
 }

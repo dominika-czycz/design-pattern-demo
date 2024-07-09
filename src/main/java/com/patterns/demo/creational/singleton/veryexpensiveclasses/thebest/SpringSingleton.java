@@ -2,6 +2,7 @@ package com.patterns.demo.creational.singleton.veryexpensiveclasses.thebest;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+
 /*
 With Spring beans, we can inject an object into the Spring Container through metadata using inversion of control (IoC).
 In effect, an object can define its dependencies without creating them and delegate that work to the IoC Container.

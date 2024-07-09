@@ -13,12 +13,11 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AbstractFactoryClient {
+    public static final String DEFAULT_OBJECTIVE = "some objective";
+    public static final String DEFAULT_PERSONAL_INFORMATION = "some personal information";
     private static final String DEFAULT_HEADING = "some heading";
     private static final String DEFAULT_SALUTATION = "some salutation";
     private static final String DEFAULT_COMPLIMENTARY_CLOSE = "some compliment close";
-    public static final String DEFAULT_OBJECTIVE = "some objective";
-    public static final String DEFAULT_PERSONAL_INFORMATION = "some personal information";
-
     private final DocumentFactory documentFactory;
 
     public List<Composable> prepareDocumentsDrafts() {

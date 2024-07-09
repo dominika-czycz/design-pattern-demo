@@ -4,7 +4,7 @@ import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public record CustomizedCat(@NonNull String name,  @NonNull BasicCat basicCat) implements GameObject {
+public record CustomizedCat(@NonNull String name, @NonNull BasicCat basicCat) implements GameObject {
     @Override
     public void render() {
         log.info("Rendering a {} {} with name {}", basicCat.breed(), getObjectType(), name);

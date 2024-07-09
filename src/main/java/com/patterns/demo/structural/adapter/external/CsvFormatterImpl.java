@@ -7,6 +7,6 @@ public class CsvFormatterImpl implements CsvFormatter {
 
     @Override
     public String formatText(String text) {
-        return text.replace(".",",");
+        return text.replace(".", ",");
     }
 }
