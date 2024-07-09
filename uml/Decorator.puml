@@ -1,0 +1,35 @@
+@startuml
+interface Component {
+  + methodA()
+  + methodB()
+}
+
+class ComponentImplementation {
+  + methodA()
+  + methodB()
+}
+
+abstract class Decorator {
+  - Component component
+  + methodA()
+  + methodB()
+}
+
+class ExtendedComponent {
+  + methodA()
+  + methodB()
+  + newBehavior()
+}
+
+Component <|-- ComponentImplementation
+Component <|-- Decorator
+Decorator <|-- ExtendedComponent
+Decorator o--> Component
+
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+}
+@enduml
