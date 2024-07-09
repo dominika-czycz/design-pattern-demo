@@ -1,0 +1,31 @@
+@startuml
+class Refined {
+  + doSomethingElse()
+}
+
+interface Implementation {
+  + {abstract} doImplementation1()
+  + {abstract} doImplementation2()
+}
+
+abstract class Abstraction {
+  + {abstract} doSomething()
+}
+
+
+class SpecificImplementation {
+  + doImplementation1()
+  + doImplementation3()
+}
+
+Refined --|> Abstraction
+Abstraction --o Implementation
+SpecificImplementation --|> Implementation
+
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+}
+@enduml
