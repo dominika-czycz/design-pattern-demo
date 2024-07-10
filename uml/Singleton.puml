@@ -1,0 +1,17 @@
+@startuml
+class Singleton {
+  - {static} instance: Singleton
+  - Singleton()
+  + {static} getInstance(): Singleton
+}
+note right : if (instance == null) {\n instance = new Singleton()\n }\n return instance
+class Client {}
+
+Client -> Singleton: getInstance
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+}
+@enduml
