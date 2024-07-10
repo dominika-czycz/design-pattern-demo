@@ -1,0 +1,30 @@
+@startuml
+abstract class Handler {
+  +handleRequest(request: Request): void
+  -successor: Handler
+}
+
+class ConcreteHandler1 {
+  +handleRequest(request: Request): void
+}
+
+class ConcreteHandler2 {
+  +handleRequest(request: Request): void
+}
+
+class Client {
+
+}
+
+Handler o--> Handler : successor
+Handler <|-- ConcreteHandler1
+Handler <|-- ConcreteHandler2
+Client -> Handler : send command
+
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+}
+@enduml
