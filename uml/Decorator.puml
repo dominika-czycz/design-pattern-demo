@@ -26,6 +26,9 @@ Component <|-- Decorator
 Decorator <|-- ExtendedComponent
 Decorator o--> Component
 
+hide empty fields
+hide empty methods
+
 skinparam class {
   BackgroundColor LightYellow
   BorderColor DarkSlateGray

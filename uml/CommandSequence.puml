@@ -1,0 +1,12 @@
+@startuml
+participant Client
+participant Command #Orange
+participant Invoker #Pink
+participant Receiver #Gold
+
+Client --> Command
+Client -> Invoker: executeCommand()
+Invoker -> Command: execute()
+Command -> Receiver: action()
+
+@enduml

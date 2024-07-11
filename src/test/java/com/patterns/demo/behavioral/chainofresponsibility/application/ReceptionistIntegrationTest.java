@@ -13,6 +13,10 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class ReceptionistIntegrationTest {
 
+    private static Car createBrokenCar() {
+        return new Car("DW6786F", "Honda Civic", ElementsState.NOT_WORKING, ElementsState.NOT_WORKING);
+    }
+
     @Test
     void shouldArrangeSuccessfulCarRepairWhenFirstMechanic() {
         // given
@@ -54,9 +58,5 @@ class ReceptionistIntegrationTest {
 
         // when + then
         assertThatExceptionOfType(UnrepairedCarException.class).isThrownBy(() -> receptionist.arrangeCarRepair(car));
-    }
-
-    private static Car createBrokenCar() {
-        return new Car("DW6786F", "Honda Civic", ElementsState.NOT_WORKING, ElementsState.NOT_WORKING);
     }
 }

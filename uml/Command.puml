@@ -1,0 +1,55 @@
+@startuml
+hide empty fields
+hide empty methods
+
+class Client
+
+class Invoker {
+    invokeCommand()
+}
+
+interface Command {
+   {abstract} execute()
+   {abstract} undo()
+}
+
+class Receiver {
+    action()
+    undo()
+}
+
+class ConcreteCommand {
+    execute()
+    undo()
+}
+Client -> Invoker : <<use>>
+Client .> ConcreteCommand : <<create>>
+Client .> Receiver :<<create or get>>
+Invoker o--> Command
+Receiver <- ConcreteCommand
+Command <|-- ConcreteCommand
+
+note top of Client
+  is responsible for creating a ConcreteCommand
+  and setting its Receiver.
+end note
+
+note top of Receiver
+  knows how to perform the work
+  needed to carry out the request.
+end note
+
+
+note left of ConcreteCommand
+  execute(){
+    receiver.action()
+  }
+end note
+
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+}
+@enduml
