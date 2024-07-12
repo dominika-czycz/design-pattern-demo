@@ -1,0 +1,39 @@
+@startuml
+interface Subject {
+  + detach(observer: Observer)
+  + attach(observer: Observer)
+  + notifyObservers()
+}
+
+class ConcreteSubject {
+  - state
+  + detach(observer: Observer)
+  + attach(observer: Observer)
+  + notifyObservers()
+}
+
+interface Observer {
+  + update()
+}
+
+
+class ConcreteObserver{
+  + update()
+}
+
+ConcreteSubject -|> Subject
+ConcreteObserver -|> Observer
+ConcreteObserver -> ConcreteSubject
+Subject --> Observer
+
+hide empty fields
+hide empty methods
+
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+}
+
+@enduml
