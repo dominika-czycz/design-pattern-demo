@@ -1,0 +1,29 @@
+@startuml
+class Originator {
+  - state: String
+  + createMemento(): Memento
+  + restoreFromMemento(memento: Memento): void
+}
+
+class Memento {
+  - state: String
+  + getState(): String
+}
+
+class Caretaker {
+  - mementos: List<Memento>
+  + addMemento(memento: Memento): void
+  + getMemento(index: int): Memento
+}
+
+Originator ..> Memento: <<instantiate>>
+Caretaker o-- Memento
+
+
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+}
+@enduml

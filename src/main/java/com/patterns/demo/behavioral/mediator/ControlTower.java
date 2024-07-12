@@ -9,10 +9,12 @@ public class ControlTower {
     private final List<AirPlane> airPlanesAtTheAirport = new ArrayList<>();
 
     public boolean requestLanding(AirPlane airPlane) {
-        // Business logic for coordinating landing
         if (airPlanesAtTheAirport.size() >= AIR_PORT_LIMIT) {
             return false;
         }
+
+        // More business logic for coordinating landing here
+
         airPlane.notifyAirTrafficControl("Requesting landing clearance.");
         return airPlanesAtTheAirport.add(airPlane);
     }

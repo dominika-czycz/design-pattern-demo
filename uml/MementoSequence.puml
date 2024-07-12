@@ -1,0 +1,16 @@
+@startuml
+participant Caretaker #Pink
+participant Originator #LightBlue
+participant Memento #Gold
+participant ApplicationService #Orange
+
+Caretaker -> Originator : createMemento()
+Originator --> Memento : new()
+Caretaker -> ApplicationService : doSomething(originator)
+ApplicationService -> Originator : changeState()
+group error
+Caretaker -> Originator: restoreFromMemento(Memento)
+Originator -> Memento : getState()
+end
+
+@enduml
