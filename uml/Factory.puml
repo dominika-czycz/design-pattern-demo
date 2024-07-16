@@ -1,0 +1,32 @@
+@startuml
+class Client
+
+interface Creator {
+  + factoryMethod(): Product
+}
+
+class ConcreteCreator {
+  + factoryMethod(): Product
+}
+
+
+interface Product
+
+class ConcreteProduct
+
+Client --> Creator
+Client .> Product :<<use>>
+ConcreteCreator -|> Creator
+Product <|- ConcreteProduct
+ConcreteCreator .> ConcreteProduct: <<instantiate>>
+
+hide empty fields
+hide empty methods
+
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+}
+@enduml

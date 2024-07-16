@@ -1,0 +1,51 @@
+@startuml
+class Client
+class Factory {
+  +createProductA()
+  +createProductB()
+}
+
+class ConcreteFactory1  #Gold {
+  +createProductA()
+  +createProductB()
+}
+
+class ConcreteFactory2  #LightGreen{
+  +createProductA()
+  +createProductB()
+}
+
+interface ProductA
+interface ProductB
+
+class ProductA1 #Gold
+class ProductA2 #LightGreen
+class ProductB1 #Gold
+class ProductB2 #LightGreen
+
+Client --> ProductA
+Client --> ProductB
+Client --> Factory
+
+ProductA <|--ProductA1
+ProductB <|--ProductB1
+ProductA <|--ProductA2
+ProductB <|--ProductB2
+Factory <|--ConcreteFactory1
+Factory <|--ConcreteFactory2
+ConcreteFactory1 ..> ProductA1:<<instantiate>>
+ConcreteFactory1 ..> ProductB1:<<instantiate>>
+ConcreteFactory2 ..> ProductA2:<<instantiate>>
+ConcreteFactory2 ..> ProductB2:<<instantiate>>
+
+hide empty fields
+hide empty methods
+
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+}
+
+@enduml
