@@ -1,0 +1,35 @@
+@startuml
+interface Target {
+    + request()
+}
+
+class Adaptee {
+    + requestToAdapt()
+}
+
+class Adapter {
+    - adaptee: Adaptee
+    + request()
+}
+
+class Client {
+   }
+
+Client -> Target
+Target <|- Adapter
+Adapter o--> Adaptee
+
+note right of Adapter::request #LightBlue
+adaptee.requestToAdapt()
+end note
+
+hide empty fields
+hide empty methods
+
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+}
+@enduml

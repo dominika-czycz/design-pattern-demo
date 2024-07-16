@@ -1,0 +1,45 @@
+@startuml
+class Director {
+    + construct(): void
+    - builder: Builder
+}
+
+interface Builder {
+    + buildPartA(): void
+    + buildPartB(): void
+    + getResult(): Product
+}
+
+class ConcreteBuilder1 {
+    + buildPartA(): void
+    + buildPartB(): void
+    + getResult(): Product
+}
+
+class ConcreteBuilder2 {
+    + buildPartA(): void
+    + buildPartB(): void
+    + getResult(): Product
+}
+
+class Product {
+    - partA: String
+    - partB: String
+}
+
+Director o-> Builder
+Builder <|-- ConcreteBuilder1
+Builder <|-- ConcreteBuilder2
+ConcreteBuilder1 ..> Product: <<instantiate>>
+ConcreteBuilder2 ..> Product: <<instantiate>>
+
+hide empty fields
+hide empty methods
+
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+}
+@enduml

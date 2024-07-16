@@ -1,0 +1,28 @@
+@startuml
+class Context {
+  - state: State
+  + request()
+}
+interface State {
+  + handle()
+}
+class ConcreteStateA {
+  + handle()
+}
+class ConcreteStateB {
+  + handle()
+}
+Context o-> State
+State <|-- ConcreteStateA
+State <|-- ConcreteStateB
+
+hide empty fields
+hide empty methods
+
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+}
+@enduml

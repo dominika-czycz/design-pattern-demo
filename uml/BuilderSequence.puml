@@ -1,0 +1,12 @@
+@startuml
+actor Client #Moccasin
+participant Director #Gold
+participant ConcreteBuilder #Pink
+
+Client -> Director: construct()
+Director -> ConcreteBuilder: buildPartA()
+Director -> ConcreteBuilder: buildPartB()
+Director -> ConcreteBuilder: getResult()
+ConcreteBuilder --> Director: Product
+
+@enduml

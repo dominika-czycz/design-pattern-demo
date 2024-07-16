@@ -1,0 +1,30 @@
+@startuml
+class Client {
+}
+
+interface Prototype {
+  +clone(): Prototype
+}
+
+class ConcretePrototype1 {
+  +clone(): Prototype
+}
+
+class ConcretePrototype2 {
+  +clone(): Prototype
+}
+
+Client -> Prototype: <<uses>>
+Prototype <|-- ConcretePrototype1
+Prototype <|-- ConcretePrototype2
+
+hide empty fields
+hide empty methods
+
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+}
+@enduml
