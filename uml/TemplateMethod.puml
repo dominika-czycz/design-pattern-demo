@@ -1,0 +1,38 @@
+@startuml
+abstract class AbstractClass {
+    + templateMethod()
+    # {abstract} step1()
+    # {abstract} step2()
+}
+
+class ConcreteClass1 {
+    # step1()
+    # step2()
+}
+
+class ConcreteClass2 {
+    # step1()
+    # step2()
+}
+
+AbstractClass <|-- ConcreteClass1
+AbstractClass <|-- ConcreteClass2
+
+note right of AbstractClass::templateMethod #LightBlue
+//maybe something more
+step1()
+//maybe something more
+step2()
+//maybe something more
+end note
+
+hide empty fields
+hide empty methods
+
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+}
+@enduml

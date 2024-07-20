@@ -4,10 +4,19 @@ class Singleton {
   - Singleton()
   + {static} getInstance(): Singleton
 }
-note right : if (instance == null) {\n instance = new Singleton()\n }\n return instance
+note right of Singleton::getInstance #LightBlue
+if (instance == null) {
+    instance = new Singleton()
+   }
+  return instance
+end note
 class Client {}
 
 Client -> Singleton: getInstance
+
+hide empty fields
+hide empty methods
+
 skinparam class {
   BackgroundColor LightYellow
   BorderColor DarkSlateGray
