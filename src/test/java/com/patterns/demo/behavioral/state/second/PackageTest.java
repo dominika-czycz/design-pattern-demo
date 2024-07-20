@@ -8,6 +8,11 @@ class PackageTest {
 
     private static final String PACKAGE_ID = "packageId";
 
+    private static void assertIsInState(Package aPackage, PackageStatus delivered) {
+        assertThat(aPackage).extracting(Package::getPackageState)
+                .isEqualTo(delivered);
+    }
+
     @Test
     void shouldBeInOrderedStateInitially() {
         // given
@@ -81,10 +86,5 @@ class PackageTest {
         aPackage.moveToNextState();
         // then
         assertIsInState(aPackage, PackageStatus.RECEIVED);
-    }
-
-    private static void assertIsInState(Package aPackage, PackageStatus delivered) {
-        assertThat(aPackage).extracting(Package::getPackageState)
-                .isEqualTo(delivered);
     }
 }

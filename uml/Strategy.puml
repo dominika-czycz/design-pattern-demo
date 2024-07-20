@@ -1,0 +1,40 @@
+@startuml
+interface Strategy {
+    +algorithm()
+}
+
+class ConcreteStrategyA {
+    +algorithm()
+}
+
+class ConcreteStrategyB {
+    +algorithm()
+}
+
+class ConcreteStrategyC {
+    +algorithm()
+}
+
+class Context {
+    -strategy: Strategy
+    +Context(strategy)
+    +invokeStrategy()
+}
+
+Strategy <|-- ConcreteStrategyA
+Strategy <|-- ConcreteStrategyB
+Strategy <|-- ConcreteStrategyC
+
+Context o-- Strategy
+
+hide empty fields
+hide empty methods
+
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+}
+
+@enduml
