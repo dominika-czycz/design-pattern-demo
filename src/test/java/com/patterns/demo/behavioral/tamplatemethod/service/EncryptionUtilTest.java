@@ -1,6 +1,7 @@
-package com.patterns.demo.behavioral.strategy.withfactory.service;
+package com.patterns.demo.behavioral.tamplatemethod.service;
 
-import com.patterns.demo.behavioral.strategy.withfactory.model.TextFile;
+
+import com.patterns.demo.behavioral.tamplatemethod.model.TextFile;
 import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;

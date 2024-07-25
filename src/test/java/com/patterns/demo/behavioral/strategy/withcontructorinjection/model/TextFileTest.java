@@ -7,9 +7,9 @@ import com.patterns.demo.behavioral.strategy.withconstructorinjection.service.RS
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 class TextFileTest {
     @Test
@@ -18,13 +18,15 @@ class TextFileTest {
         String content = "content";
         AESEncryption aesEncryption = mock(AESEncryption.class);
         byte[] expectedEncryptedContent = "encryptedText".getBytes();
-        when(aesEncryption.encrypt(content)).thenReturn(expectedEncryptedContent);
+        given(aesEncryption.encrypt(content)).willReturn(expectedEncryptedContent);
         TextFile fileName = new TextFile("fileName", aesEncryption);
         fileName.setContent(content);
+
         //when
         byte[] encryptedContent = fileName.getEncryptedContent();
+
         //then
-        verify(aesEncryption).encrypt(content);
+        then(aesEncryption).should().encrypt(content);
         assertThat(encryptedContent).isEqualTo(expectedEncryptedContent);
     }
 
@@ -34,13 +36,15 @@ class TextFileTest {
         String content = "content";
         RSAEncryption rsaEncryption = mock(RSAEncryption.class);
         byte[] expectedEncryptedContent = "encryptedText".getBytes();
-        when(rsaEncryption.encrypt(content)).thenReturn(expectedEncryptedContent);
+        given(rsaEncryption.encrypt(content)).willReturn(expectedEncryptedContent);
         TextFile fileName = new TextFile("fileName", rsaEncryption);
         fileName.setContent(content);
+
         //when
         byte[] encryptedContent = fileName.getEncryptedContent();
+
         //then
-        verify(rsaEncryption).encrypt(content);
+        then(rsaEncryption).should().encrypt(content);
         assertThat(encryptedContent).isEqualTo(expectedEncryptedContent);
     }
 }
