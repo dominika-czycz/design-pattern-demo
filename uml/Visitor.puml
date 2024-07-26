@@ -1,0 +1,46 @@
+@startuml
+class Client{
+}
+
+interface Element {
+  +accept(visitor: Visitor)
+}
+
+class ConcreteElementA implements Element {
+  +accept(visitor: Visitor)
+}
+
+class ConcreteElementB implements Element {
+  +accept(visitor: Visitor)
+}
+
+interface Visitor {
+  +visit(element: ConcreteElementA)
+  +visit(element: ConcreteElementB)
+}
+
+class ConcreteVisitor1 implements Visitor {
+  +visit(element: ConcreteElementA)
+  +visit(element: ConcreteElementB)
+}
+
+class ConcreteVisitor2 implements Visitor {
+  +visit(element: ConcreteElementA)
+  +visit(element: ConcreteElementB)
+}
+
+Client --> Visitor
+Client --> Element
+
+hide empty fields
+hide empty methods
+
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+
+}
+
+@enduml
