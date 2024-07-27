@@ -1,0 +1,33 @@
+@startuml
+
+class Client {}
+
+class Context {}
+
+interface AbstractExpression {
+  +interpret(context: Context)
+}
+
+class TerminalExpression implements AbstractExpression {
+  +interpret(context: Context)
+}
+
+class NonterminalExpression implements AbstractExpression {
+  +interpret(context: Context)
+}
+
+Client --> Context
+Client -> AbstractExpression
+AbstractExpression --o NonterminalExpression
+
+
+hide empty fields
+hide empty methods
+
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+}
+@enduml

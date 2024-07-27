@@ -21,6 +21,9 @@ Handler <|-- ConcreteHandler1
 Handler <|-- ConcreteHandler2
 Client -> Handler : send command
 
+hide empty fields
+hide empty methods
+
 skinparam class {
   BackgroundColor LightYellow
   BorderColor DarkSlateGray
