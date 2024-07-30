@@ -1,0 +1,34 @@
+@startuml
+class Client {}
+
+interface  Subject {
+  +request()
+}
+
+class RealSubject implements Subject{
+  +request()
+}
+
+class Proxy implements Subject{
+  -realSubject: RealSubject
+  +request()
+}
+Client -> Subject: <<use>>
+RealSubject <-o Proxy
+
+note right of Proxy::request #LightBlue
+...
+realSubject.request()
+...
+end note
+
+hide empty fields
+hide empty methods
+
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+}
+@enduml

@@ -1,0 +1,41 @@
+@startuml
+
+class Client {
+}
+
+class FlyweightFactory {
+  -pool: Map<key, Flyweight>
+  +getFlyweight(key): Flyweight
+}
+
+abstract class Flyweight {
+  +doSmth(extrinsicState: int)
+}
+
+class ConcreteShareableFlyweight extends Flyweight {
+  -shareableState
+  +doSmth(extrinsicState: int)
+}
+
+class ConcreteUnshearableFlyweight extends Flyweight {
+  -unshareableState
+  +doSmth(extrinsicState: int)
+}
+
+Client --> FlyweightFactory
+Client -> ConcreteShareableFlyweight
+Client -> ConcreteUnshearableFlyweight
+FlyweightFactory o-->Flyweight
+
+
+hide empty fields
+hide empty methods
+
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+}
+
+@enduml

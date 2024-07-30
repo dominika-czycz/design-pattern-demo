@@ -3,7 +3,6 @@ package com.patterns.demo.structural.flyweight.application.service;
 
 import com.patterns.demo.structural.flyweight.application.model.BasicCat;
 import com.patterns.demo.structural.flyweight.application.model.CustomizedCat;
-import com.patterns.demo.structural.flyweight.application.model.GameObject;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -26,14 +25,11 @@ class CustomizedAnimalFactoryIntegrationTest {
         String garfield = "Garfield";
 
         //when
-        GameObject cat1 = customizedAnimalFactory.createCustomizedCat(biscuit);
-        GameObject cat2 = customizedAnimalFactory.createCustomizedCat(garfield);
+        CustomizedCat cat1 = customizedAnimalFactory.createCustomizedCat(biscuit);
+        CustomizedCat cat2 = customizedAnimalFactory.createCustomizedCat(garfield);
 
         //then
-        assertThat(cat1).hasSameClassAs(cat2).isInstanceOf(CustomizedCat.class);
-        CustomizedCat customizedCat1 = (CustomizedCat) cat1;
-        CustomizedCat customizedCat2 = (CustomizedCat) cat2;
-        assertThat(customizedCat1.basicCat()).isNotNull().isSameAs(customizedCat2.basicCat());
+        assertThat(cat1.basicCat()).isNotNull().isSameAs(cat2.basicCat());
     }
 
     @Test
@@ -46,7 +42,7 @@ class CustomizedAnimalFactoryIntegrationTest {
 
         //when
         IntStream.range(0, threadCount).forEach(i -> executorService.execute(() -> {
-            CustomizedCat customizedCat = (CustomizedCat) customizedAnimalFactory.createCustomizedCat(biscuit + 1);
+            CustomizedCat customizedCat = customizedAnimalFactory.createCustomizedCat(biscuit + 1);
             basicCats.add(customizedCat.basicCat());
         }));
 

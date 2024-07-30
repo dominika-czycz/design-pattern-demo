@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class CustomizedAnimalFactory {
     private final BasicAnimalFactory basicAnimalFactory;
 
-    public GameObject createCustomizedCat(String name) {
+    public CustomizedCat createCustomizedCat(String name) {
         GameObject cat = basicAnimalFactory.getBasicAnimal(AnimalType.CAT);
         return new CustomizedCat(name, (BasicCat) cat);
     }

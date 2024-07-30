@@ -1,0 +1,36 @@
+@startuml
+
+class Client {}
+
+abstract class Component {
+  +operation()
+  +add(component: Component)
+  +remove(component: Component)
+  +getChild(): Component
+}
+
+class Leaf extends Component{
+  +operation()
+}
+
+class Composite extends Component {
+  -children: List<Component>
+  +operation()
+  +add(component: Component)
+  +remove(component: Component)
+  +getChild(): Component
+}
+
+Client -> Component
+Component <--o Composite
+
+hide empty fields
+hide empty methods
+
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+}
+@enduml

@@ -1,0 +1,33 @@
+@startuml
+
+class Client {}
+
+interface Component {
+  +operation()
+}
+
+class Leaf implements Component{
+  +operation()
+}
+
+class Composite implements Component {
+  -children: List<Component>
+  +operation()
+  +add(component: Component)
+  +remove(component: Component)
+  +getChild(): Component
+}
+
+Client -> Component
+Component <--o Composite
+
+hide empty fields
+hide empty methods
+
+skinparam class {
+  BackgroundColor LightYellow
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+  FontColor DarkSlateGray
+}
+@enduml
